@@ -1,4 +1,4 @@
-import { PlaywrightTestConfig } from "@playwright/test";
+import { devices, PlaywrightTestConfig } from "@playwright/test";
 
 const config: PlaywrightTestConfig = {
     timeout: 60000,
@@ -25,6 +25,14 @@ const config: PlaywrightTestConfig = {
         {
             name: 'Webkit',
             use: { browserName: 'webkit'}
+        },
+        {
+            name: 'iPhone',
+            use: {...devices['iPhone 13']}
+        },
+        {
+            name: 'pixel',
+            use: {...devices['Pixel 5']}
         }
     ],
     testMatch: '**.spec.ts',

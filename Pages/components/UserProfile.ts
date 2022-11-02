@@ -8,6 +8,7 @@ export class UserProfile {
     readonly logoutBtn: Locator
     readonly submitLogoutBtn: Locator
     readonly loginBtn: Locator
+    readonly loginPageHeader: Locator
 
     // Init selectors using constructor
     constructor(page: Page) {
@@ -17,10 +18,12 @@ export class UserProfile {
         this.logoutBtn = page.locator('text=Log out')
         this.submitLogoutBtn = page.locator('#logout-submit')
         this.loginBtn = page.locator(`//a[contains(@class, 'Buttonsstyles__Button') and text()='Log in']`)
+        this.loginPageHeader = page.locator(`//h1`)
     }
     // Define home page methods
 
     async logout() {
+        // this.page.pause()
         await this.userSettings.click()
         await this.logoutBtn.click()
         await this.submitLogoutBtn.waitFor({state: "visible"})
@@ -28,7 +31,7 @@ export class UserProfile {
     }
 
     async verifyLogoutSuccess() {
-        await this.loginBtn.waitFor({state: "visible"})
-        await expect(this.loginBtn).toBeVisible()
+        await this.loginPageHeader.waitFor({state: "visible"})
+        await expect(this.loginPageHeader).toBeVisible()
     }
 }
