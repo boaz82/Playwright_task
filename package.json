@@ -1,0 +1,29 @@
+{
+  "name": "automation_task",
+  "version": "1.0.0",
+  "description": "Automated Task",
+  "main": "index.js",
+  "scripts": {
+    "test:chrome": "playwright test --config=playwright.config.ts --project=Chromium",
+    "test:firefox": "playwright test --config=playwright.config.ts --project=Firefox",
+    "test:webkit": "playwright test --config=playwright.config.ts --project=Webkit",
+    "test:e2e:html:report": "playwright test --config=playwright.config.ts --project=Chromium --headed --reporter=html",
+    "test:e2e:junit:report": "playwright test --config=playwright.config.ts --project=Chromium --headed --reporter=junit",
+    "test:e2e": "playwright test --config=playwright.config.ts --project=Chromium --headed",
+    "test:e2e:positive": "playwright test --config=e2e.config.ts --project=Chromium --headed --grep @positiveTest",
+    "test:e2e:negative": "playwright test --config=e2e.config.ts --project=Chromium --headed --grep @negativeTest",
+    "test:api": "playwright test --config=playwright.config.ts --project=Chromium --headed"
+  },
+  "author": "Boaz Cohen",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.27.2",
+    "playwright": "^1.26.0",
+    "prettier": "^2.7.1"
+  },
+  "devDependencies": {
+    "@applitools/eyes-playwright": "^1.12.7",
+    "@playwright/test": "^1.27.1",
+    "allure-playwright": "^2.0.0-beta.19"
+  }
+}

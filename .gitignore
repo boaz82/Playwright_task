@@ -1,0 +1,15 @@
+allure-results
+node_modules
+example.spec.ts
+playwright-report
+reports
+test-results
+README.md
+jenkins.war
+allure-report
+newman
+package-lock.json
+.DS_Store
+Pages/.DS_Store
+tests/.DS_Store
+config/data.json
