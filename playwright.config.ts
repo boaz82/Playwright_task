@@ -41,7 +41,6 @@ const config: PlaywrightTestConfig = {
         ['list'],
         ['junit', { outputFile: `test-results/Junit/test-results-${Date.now()}.xml` }],
       ],
-      globalSetup: "src/utils/globalSetup.ts"
 }
 
 export default config
