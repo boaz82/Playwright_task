@@ -1,0 +1,10 @@
+{
+    "UI":{
+        "trelloUserEmail": "automaton.user@gmail.com",
+        "invalidEmail": "invalid@gmail.com",
+        "trelloLoginUrl": "https://trello.com/login"
+    },
+    "API":{
+        "baseUrl": "https://api.trello.com"
+    }
+}

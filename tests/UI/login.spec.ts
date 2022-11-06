@@ -3,6 +3,7 @@ import { UserProfile } from '../../Pages/components/UserProfile'
 import { LoginPage } from '../../Pages/LoginPage'
 import * as data from "../../config/data.json"
 import { BatchInfo, Configuration, VisualGridRunner, BrowserType, DeviceName, ScreenOrientation, Eyes, Target } from '@applitools/eyes-playwright';
+import ENV from "../../src/utils/env"
 
 // Applitools objects to share for all tests
 export let Batch: BatchInfo;
@@ -49,7 +50,7 @@ test.describe.skip('Trello test with Applitools', () => {
         // Other mobile devices are available, including iOS.
         Config.addDeviceEmulation(DeviceName.iPhone_11, ScreenOrientation.PORTRAIT);
         Config.addDeviceEmulation(DeviceName.Pixel_5, ScreenOrientation.LANDSCAPE);
-        Config.setApiKey(data.APPLITOOLS.apiKey);
+        Config.setApiKey(ENV.APPLITOOLS_API_KEY!);
     });
     // This method sets up each test with its own Applitools Eyes object.
     test.beforeEach(async ({ page }) => {
@@ -106,20 +107,37 @@ test.describe.parallel('Trello tests', () => {
         userProfile = new UserProfile(page)
         await loginPage.gotoTrelloLoginPage()
     })
-    test('Verify login to Trello @positiveTest', async () => {
-        await loginPage.login(data.UI.trelloUserEmail, data.UI.trelloPassword)
+    // test('Verify login to Trello @positiveTest', async () => {
+    //     await loginPage.login(data.UI.trelloUserEmail, data.UI.trelloPassword)
+    //     await loginPage.verifyLoginSuccess()
+    // })
+
+    // test('Logout from Trello @positiveTest', async () => {
+    //     await loginPage.login(data.UI.trelloUserEmail, data.UI.trelloPassword)
+    //     await loginPage.verifyLoginSuccess()
+    //     await userProfile.logout()
+    //     await userProfile.verifyLogoutSuccess()
+    // })
+
+    // test('verify login failed with incorrect email @negativeTest', async () => {
+    //     await loginPage.login(data.UI.invalidEmail, data.UI.trelloPassword)
+    //     await loginPage.assertErrorMessage()
+    // })
+
+    test('Verify login to Trello @positiveTest', async () => {        
+        await loginPage.login(data.UI.trelloUserEmail, ENV.TRELLO_PASSWORD!)
         await loginPage.verifyLoginSuccess()
     })
 
     test('Logout from Trello @positiveTest', async () => {
-        await loginPage.login(data.UI.trelloUserEmail, data.UI.trelloPassword)
+        await loginPage.login(data.UI.trelloUserEmail, ENV.TRELLO_PASSWORD!)
         await loginPage.verifyLoginSuccess()
         await userProfile.logout()
         await userProfile.verifyLogoutSuccess()
     })
 
     test('verify login failed with incorrect email @negativeTest', async () => {
-        await loginPage.login(data.UI.invalidEmail, data.UI.trelloPassword)
+        await loginPage.login(data.UI.invalidEmail, ENV.TRELLO_PASSWORD!)
         await loginPage.assertErrorMessage()
     })
 })

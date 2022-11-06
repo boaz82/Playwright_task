@@ -12,4 +12,4 @@ package-lock.json
 .DS_Store
 Pages/.DS_Store
 tests/.DS_Store
-config/data.json
+.env

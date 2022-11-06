@@ -4,7 +4,7 @@
   "description": "Automated Task",
   "main": "index.js",
   "scripts": {
-    "test:chrome": "playwright test --config=playwright.config.ts --project=Chromium",
+    "test:chrome": "test_env=env playwright test --config=playwright.config.ts --project=Chromium",
     "test:firefox": "playwright test --config=playwright.config.ts --project=Firefox",
     "test:webkit": "playwright test --config=playwright.config.ts --project=Webkit",
     "test:e2e:html:report": "playwright test --config=playwright.config.ts --project=Chromium --headed --reporter=html",
@@ -20,6 +20,7 @@
   "license": "ISC",
   "dependencies": {
     "axios": "^0.27.2",
+    "dotenv": "^16.0.3",
     "playwright": "^1.26.0",
     "prettier": "^2.7.1"
   },

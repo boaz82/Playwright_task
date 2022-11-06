@@ -2,6 +2,8 @@ import { test, expect } from '@playwright/test'
 import axios from 'axios'
 import { ApiPage } from '../../Pages/API/ApiPage'
 import * as data from "../../config/data.json"
+import ENV from "../../src/utils/env"
+
 
 test.describe('API testing', () => {
     let apiPage: ApiPage
@@ -9,8 +11,8 @@ test.describe('API testing', () => {
         apiPage = new ApiPage(page)
     })
     const baseUrl = data.API.baseUrl
-    const key = data.API.key
-    const token = data.API.token
+    const key = ENV.TRELLO_KEY
+    const token = ENV.TRELLO_TOKEN
     let boardId: string
     test('Create new board', async () => {
         const resp = await axios.post(`${baseUrl}/1/boards/?name=my%20board%20name&key=${key}&token=${token}`)
