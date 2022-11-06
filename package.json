@@ -4,7 +4,7 @@
   "description": "Automated Task",
   "main": "index.js",
   "scripts": {
-    "test:chrome": "test_env=env playwright test --config=playwright.config.ts --project=Chromium",
+    "test:chrome": "playwright test --config=playwright.config.ts --project=Chromium",
     "test:firefox": "playwright test --config=playwright.config.ts --project=Firefox",
     "test:webkit": "playwright test --config=playwright.config.ts --project=Webkit",
     "test:e2e:html:report": "playwright test --config=playwright.config.ts --project=Chromium --headed --reporter=html",

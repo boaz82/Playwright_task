@@ -13,3 +13,4 @@ package-lock.json
 Pages/.DS_Store
 tests/.DS_Store
 .env
+globalSetup.ts
