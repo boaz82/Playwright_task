@@ -12,7 +12,7 @@ pipeline {
         stage('Run') {
             steps {
                 sh """
-                    docker run --rm boaz_test
+                    docker run -e TRELLO_PASSWORD=${env.TRELLO_PASSWORD} --rm boaz_test
                 """
             }
         }
