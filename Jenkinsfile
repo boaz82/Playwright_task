@@ -23,7 +23,7 @@ pipeline {
         }
         stage('Run Newman') {
             steps {
-                echo 'https://api.getpostman.com/collections/19601700-9aba4a64-0676-45e0-b57c-868a2b64f241?apikey=$POSTMAN_API_KEY'
+                echo 'https://api.getpostman.com/collections/19601700-9aba4a64-0676-45e0-b57c-868a2b64f241?apikey=${POSTMAN_API_KEY}'
                 sh ('docker run --rm -t postman/newman run https://api.getpostman.com/collections/19601700-9aba4a64-0676-45e0-b57c-868a2b64f241?apikey=$POSTMAN_API_KEY -e trelloKey=$TRELLO_KEY -e trelloToken=$TRELLO_TOKEN')
             }
         }
