@@ -13,7 +13,8 @@ export class LoginPage {
     readonly submitLoginBtn: Locator
     readonly errorMessage: Locator
     // readonly allBoards: Locator
-    allBoards = `.all-boards`
+    // allBoards = `.all-boards`
+    allBoards = `.boards-page-section-header-name`
 
     // Init selectors using constructor
     constructor(page: Page) {
