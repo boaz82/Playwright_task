@@ -5,9 +5,9 @@ import { WebActions } from "./Actions/WebActions";
 export class LoginPage {
     // Define selectors
     readonly page: Page
-    readonly usernameInput: Locator
+    // readonly usernameInput: Locator
     webActions: WebActions
-    
+    usernameInput = `#user`
     // readonly passwordInput: Locator
     passwordInput = `#password`;
     readonly submitLoginBtn: Locator
@@ -19,7 +19,7 @@ export class LoginPage {
     constructor(page: Page) {
         this.page = page
         this.webActions = new WebActions(this.page)
-        this.usernameInput = page.locator('#user')
+        // this.usernameInput = page.locator('#user')
         // this.passwordInput = page.locator('#password')
         this.submitLoginBtn = page.locator(`//input[@id='login'] | //button[@id='login-submit']`)
         this.errorMessage = page.locator('#error')
@@ -31,7 +31,10 @@ export class LoginPage {
     }
 
     async login(username: string, password: string) {
-        await this.usernameInput.type(username)
+        await this.page.waitForSelector(this.usernameInput)
+        const userInputSelector = this.page.locator(this.usernameInput)
+        await userInputSelector.type(username)
+        // await this.usernameInput.type(username)
         await this.submitLoginBtn.click()
         await this.page.waitForSelector(this.passwordInput)
         const selector = this.page.locator(this.passwordInput)
