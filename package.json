@@ -14,7 +14,9 @@
     "test:e2e:negative": "playwright test --config=e2e.config.ts --project=Chromium --headed --grep @negativeTest",
     "test:iphone": "playwright test --config=playwright.config.ts --project=iPhone --headed",
     "test:pixel": "playwright test --config=playwright.config.ts --project=pixel",
-    "test:all": "playwright test --config=playwright.config.ts"
+    "test:all": "playwright test --config=playwright.config.ts",
+    "test:local": "test_env=env playwright test --config=playwright.config.ts --project=Chromium"
+
   },
   "author": "Boaz Cohen",
   "license": "ISC",
