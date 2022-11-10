@@ -93,7 +93,7 @@ pipeline {
                 ls -a ${WORKSPACE}
                 """
                 script {
-                    ws("$workspace/Jenkins_Automation_task/"){
+                    ws("$workspace/docker test/"){
                         allure([
                             includeProperties: false,
                             jdk: '',
