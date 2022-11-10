@@ -6,7 +6,8 @@ export class UserProfile {
     readonly allBoards: Locator
     readonly userSettings: Locator
     readonly logoutBtn: Locator
-    readonly submitLogoutBtn: Locator
+    // readonly submitLogoutBtn: Locator
+    submitLogoutBtn = `#logout-submit`
     readonly loginBtn: Locator
     loginPageHeader = `//button[text()='Sign up - it’s free']`
 
@@ -16,7 +17,7 @@ export class UserProfile {
         this.allBoards = page.locator('.all-boards')
         this.userSettings = page.locator(`//div[@title='Automation Test (user92864824)']`)
         this.logoutBtn = page.locator('text=Log out')
-        this.submitLogoutBtn = page.locator('#logout-submit')
+        // this.submitLogoutBtn = page.locator('#logout-submit')
         this.loginBtn = page.locator(`//a[contains(@class, 'Buttonsstyles__Button') and text()='Log in']`)
     }
     // Define home page methods
@@ -24,8 +25,11 @@ export class UserProfile {
     async logout() {
         await this.userSettings.click()
         await this.logoutBtn.click()
-        await this.submitLogoutBtn.waitFor({state: "visible"})
-        await this.submitLogoutBtn.click()
+        const submitLogoutBtnSelector = this.page.locator(this.submitLogoutBtn)
+        // await this.submitLogoutBtn.waitFor({state: "visible"})
+        await this.page.waitForSelector(this.submitLogoutBtn)
+        // await this.submitLogoutBtn.click()
+        await submitLogoutBtnSelector.click()
     }
 
     async verifyLogoutSuccess() {
