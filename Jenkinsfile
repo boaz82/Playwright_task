@@ -56,6 +56,13 @@ default_branch = 'main'
 
 pipeline {
     agent any
+
+    environment {
+        TRELLO_PASSWORD=credentials('trello_password')
+        TRELLO_KEY=credentials('Trello_key')
+        TRELLO_TOKEN=credentials('Trello_token')
+        POSTMAN_API_KEY=credentials('postman-api-key')
+    }
     options {
         disableConcurrentBuilds()
         buildDiscarder(logRotator(numToKeepStr: '10'))
@@ -93,7 +100,7 @@ pipeline {
                 ls -a ${WORKSPACE}
                 """
                 script {
-                    ws("$workspace/docker test/"){
+                    ws("$workspace/Jenkins_Automation_task/"){
                         allure([
                             includeProperties: false,
                             jdk: '',
