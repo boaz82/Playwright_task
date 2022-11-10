@@ -34,7 +34,7 @@ pipeline {
                             jdk: '',
                             properties: [],
                             reportBuildPolicy: 'ALWAYS',
-                            results: [[path: 'docker test/allure-results']]
+                            results: [[path: 'allure-results']]
                     ])
                 }
             }
