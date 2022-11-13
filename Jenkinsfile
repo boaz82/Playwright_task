@@ -28,7 +28,7 @@ pipeline {
         }
         stage('Allure Reports') {
             steps {
-                script {
+                // script {
                     allure([
                             includeProperties: false,
                             jdk: '',
@@ -36,7 +36,7 @@ pipeline {
                             reportBuildPolicy: 'ALWAYS',
                             results: [[path: 'allure-results']]
                     ])
-                }
+                // }
             }
         }
     }
