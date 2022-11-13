@@ -18,7 +18,7 @@ pipeline {
         }
         stage('Run') {
             steps {
-                sh ('docker run -v /Users/boaz_mac/.jenkins/workspace/docker_test:/allure_test_results/ allure_test_results boaz_test:latest -e TRELLO_PASSWORD=$TRELLO_PASSWORD -e TRELLO_KEY=$TRELLO_KEY -e TRELLO_TOKEN=$TRELLO_TOKEN --rm boaz_test')
+                sh ('docker run -v /Users/boaz_mac/.jenkins/workspace/docker_test:/allure_test_results/ allure_results boaz_test:latest -e TRELLO_PASSWORD=$TRELLO_PASSWORD -e TRELLO_KEY=$TRELLO_KEY -e TRELLO_TOKEN=$TRELLO_TOKEN --rm boaz_test')
             }
         }
         stage('Run Newman') {
