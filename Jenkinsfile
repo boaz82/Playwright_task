@@ -48,4 +48,9 @@ pipeline {
             sh ('docker rmi boaz_test')
         }
     }
+    post {
+        always {
+            cleanWs()
+        }
+    }
 }
