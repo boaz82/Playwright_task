@@ -45,13 +45,13 @@ pipeline {
                 ls -a ${WORKSPACE}
                 """
                 script {
-                    ws("$workspace/allure-docker-api-usage/"){
+                    ws("$workspace/target/"){
                         allure([
                             includeProperties: false,
                             jdk: '',
                             properties: [],
                             reportBuildPolicy: 'ALWAYS',
-                            results: [[path: "allure-results"]]
+                            results: [[path: "target/allure-results"]]
                         ])
                     }
                 }
