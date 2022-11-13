@@ -28,15 +28,15 @@ pipeline {
         }
         stage('Allure Reports') {
             steps {
-                // script {
+                script {
                     allure([
                             includeProperties: false,
                             jdk: '',
                             properties: [],
                             reportBuildPolicy: 'ALWAYS',
-                            results: [[path: 'allure-results']]
+                            results: [[path: '$WORKSPACE/target/allure-results']]
                     ])
-                // }
+                }
             }
         }
     }
