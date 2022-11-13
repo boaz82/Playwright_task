@@ -26,34 +26,16 @@ pipeline {
                 sh ('docker run --rm -t postman/newman run https://api.getpostman.com/collections/19601700-9aba4a64-0676-45e0-b57c-868a2b64f241?apikey=$POSTMAN_API_KEY --env-var "trelloKey=$TRELLO_KEY" --env-var "trelloToken=$TRELLO_TOKEN"')
             }
         }
-        // stage('Allure Reports') {
-        //     steps {
-        //         script {
-        //             allure([
-        //                     includeProperties: false,
-        //                     jdk: '',
-        //                     properties: [],
-        //                     reportBuildPolicy: 'ALWAYS',
-        //                     results: [[path: '$WORKSPACE/target/allure-results']]
-        //             ])
-        //         }
-        //     }
-        // }
-        stage('ALLURE') {
+        stage('Allure Reports') {
             steps {
-                sh """
-                ls -a ${WORKSPACE}
-                """
                 script {
-                    ws("$workspace/target/"){
-                        allure([
+                    allure([
                             includeProperties: false,
                             jdk: '',
                             properties: [],
                             reportBuildPolicy: 'ALWAYS',
-                            results: [[path: "target/allure-results"]]
-                        ])
-                    }
+                            results: [[path: '/allure-results']]
+                    ])
                 }
             }
         }
