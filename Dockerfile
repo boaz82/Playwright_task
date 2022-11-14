@@ -11,4 +11,4 @@ COPY . /appnew
 
 # EXPOSE 80
 
-CMD ["npm","run","test:chrome"]
+# CMD ["npm","run","test:chrome"]
