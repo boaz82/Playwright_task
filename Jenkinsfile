@@ -23,7 +23,7 @@ pipeline {
         }
         stage('Run Newman') {
             steps {
-                sh ('docker run --rm -t postman/newman run https://api.getpostman.com/collections/19601700-9aba4a64-0676-45e0-b57c-868a2b64f241?apikey=$POSTMAN_API_KEY --env-var "trelloKey=$TRELLO_KEY" --env-var "trelloToken=$TRELLO_TOKEN" --reporters cli,allure,junit --reporter-allure-export allure-results --reporter-junit-export test-results/newman/report.xml')
+                sh ('docker run --rm -t postman/newman run https://api.getpostman.com/collections/19601700-9aba4a64-0676-45e0-b57c-868a2b64f241?apikey=$POSTMAN_API_KEY --env-var "trelloKey=$TRELLO_KEY" --env-var "trelloToken=$TRELLO_TOKEN"')
             }
         }
         stage('Allure Reports') {
@@ -34,7 +34,7 @@ pipeline {
                             jdk: '',
                             properties: [],
                             reportBuildPolicy: 'ALWAYS',
-                            results: [[path: '/allure-results']]
+                            results: [[path: '${WORKSPACE}/allure-results']]
                     ])
                 }
             }
