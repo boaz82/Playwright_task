@@ -16,7 +16,6 @@
     "test:pixel": "playwright test --config=playwright.config.ts --project=pixel",
     "test:all": "playwright test --config=playwright.config.ts",
     "test:local": "test_env=env playwright test --config=playwright.config.ts --project=Chromium"
-
   },
   "author": "Boaz Cohen",
   "license": "ISC",
@@ -29,6 +28,7 @@
   "devDependencies": {
     "@applitools/eyes-playwright": "^1.12.7",
     "@playwright/test": "^1.27.1",
+    "allure-commandline": "^2.20.1",
     "allure-playwright": "^2.0.0-beta.19"
   }
 }
