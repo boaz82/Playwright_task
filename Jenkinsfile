@@ -28,21 +28,30 @@ pipeline {
         }
         stage('Allure Reports') {
             steps {
-                script {
-                    allure([
-                            includeProperties: false,
-                            jdk: '',
-                            properties: [],
-                            reportBuildPolicy: 'ALWAYS',
-                            results: [[path: '${WORKSPACE}/allure-results']]
-                    ])
-                }
+                // script {
+                //     allure([
+                //             includeProperties: false,
+                //             jdk: '',
+                //             properties: [],
+                //             reportBuildPolicy: 'ALWAYS',
+                //             results: [[path: 'allure-results']]
+                //     ])
+                // }
             }
         }
     }
     post {
         always {
-            emailext body: 'A Test EMail', recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']], subject: 'Test'
+            // emailext body: 'A Test EMail', recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']], subject: 'Test'
+            script {
+                    allure([
+                            includeProperties: false,
+                            jdk: '',
+                            properties: [],
+                            reportBuildPolicy: 'ALWAYS',
+                            results: [[path: 'allure-results']]
+                    ])
+                }
         }
         cleanup {
             sh ('docker rmi boaz_test')
